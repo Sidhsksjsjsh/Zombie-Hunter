@@ -67,8 +67,8 @@ gmt.__namecall = newcclosure(function(self, ...)
                 Args[1]["Hit"] = v.Head
                 Args[1]["Target"] = v.Head
                 Args[1]["position"] = v.Head.Position
-                Args[1]["normal"] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-                Args[1]["Damage"] = client.damage
+                --Args[1]["normal"] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                --Args[1]["Damage"] = client.damage
            end)
 		    return self.FireServer(self, unpack(Args))
         end
@@ -90,36 +90,11 @@ local T2 = Window:MakeTab({
    PremiumOnly = false
 })
 
-T1:AddSlider({
-  Name = "Set Damage",
-  Min = 0,
-  Max = 500000,
-  Default = 5,
-  Color = Color3.fromRGB(255,255,255),
-  Increment = 1,
-  ValueName = "Critical",
-  Callback = function(Value)
-      client.damage = Value
-  end    
-})
-
 T1:AddToggle({
    Name = "Head Tracker",
    Default = false,
    Callback = function(Value)
       Trigger.Head = Value
-   end    
-})
-
-T1:AddToggle({
-   Name = "Infinite Damage",
-   Default = false,
-   Callback = function(Value)
-    _G.Repeater = Value
-       while wait() do
-        if _G.Repeater == false then break end
-         client.damage = math.huge
-      end
    end    
 })
 
