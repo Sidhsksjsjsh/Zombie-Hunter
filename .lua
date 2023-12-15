@@ -64,7 +64,7 @@ gmt.__namecall = newcclosure(function(self, ...)
 		Args[1]["Part"] = v.Head
                 Args[1]["TargetHead"] = true
                 Args[1]["Hit"] = v.Head
-		Args[1]["Damage"] = math.huge
+		Args[1]["Damage"] = 9e9
            end)
 		    return self.FireServer(self,unpack(Args))
         end
