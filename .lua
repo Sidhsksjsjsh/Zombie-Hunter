@@ -74,6 +74,12 @@ end)
 local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/NMEHkVTb"))()
 local Window = OrionLib:MakeWindow({Name = "VIP Turtle Hub V3", HidePremium = false, SaveConfig = false, ConfigFolder = "TurtleFi"})
 
+local gunHandler = {}
+local armorHandler = {}
+
+OrionLib:AddTable(game:GetService("ReplicatedStorage").Assets.Item.Gun,gunHandler)
+OrionLib:AddTable(game:GetService("ReplicatedStorage").Assets.Item.Armor,armorHandler)
+
 local T1 = Window:MakeTab({
    Name = "Main",
    Icon = "rbxassetid://",
@@ -82,6 +88,12 @@ local T1 = Window:MakeTab({
 
 local T2 = Window:MakeTab({
    Name = "Auto Pick up",
+   Icon = "rbxassetid://",
+   PremiumOnly = false
+})
+
+local T3 = Window:MakeTab({
+   Name = "Test",
    Icon = "rbxassetid://",
    PremiumOnly = false
 })
