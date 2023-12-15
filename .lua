@@ -1,4 +1,4 @@
-local args = {
+local akjkj = {
     [1] = {
         ["CF"] = CFrame.new(-141.36489868164062, 19.054075241088867, -426.1766662597656, 0.9075486063957214, -0.023218125104904175, -0.4193046987056732, -0, 0.9984703660011292, -0.05528821796178818, 0.4199470579624176, 0.05017674341797829, 0.9061604142189026),
         ["Part"] = workspace["Stage_Monster"]["Zombie"]["Head"],
@@ -98,6 +98,12 @@ local T3 = Window:MakeTab({
    PremiumOnly = false
 })
 
+local T4 = Window:MakeTab({
+   Name = "Test armor",
+   Icon = "rbxassetid://",
+   PremiumOnly = false
+})
+
 T1:AddToggle({
    Name = "Head Tracker",
    Default = false,
@@ -124,4 +130,54 @@ T2:AddToggle({
         TriggerProximityPrompt()
       end
    end    
+})
+
+T3:AddDropdown({
+   Name = "Select Gun",
+   Default = gunHandler[1],
+   Options = gunHandler,
+   Callback = function(Value)
+      _G.GunSync = Value
+   end    
+})
+
+T3:AddButton({
+  Name = "Collect test",
+  Callback = function()
+      local args = {
+            [1] = {
+		["NewCF"] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position,
+		["ItemName"] = _G.GunSync,
+		["ItemType"] = "Gun",
+		["Rarity"] = 1
+		}
+	}
+
+      game:GetService("ReplicatedStorage")["Temp_Remote"]["RemoteEvent"]["Get"]:FireServer(unpack(args))
+  end    
+})
+
+T4:AddDropdown({
+   Name = "Select Armor",
+   Default = armorHandler[1],
+   Options = armorHandler,
+   Callback = function(Value)
+      _G.ArmorSync = Value
+   end    
+})
+
+T4:AddButton({
+  Name = "Collect test",
+  Callback = function()
+      local args = {
+            [1] = {
+		["NewCF"] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position,
+		["ItemName"] = _G.ArmorSync,
+		["ItemType"] = "Armor",
+		["Rarity"] = 1
+		}
+	}
+
+      game:GetService("ReplicatedStorage")["Temp_Remote"]["RemoteEvent"]["Get"]:FireServer(unpack(args))
+  end    
 })
