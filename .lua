@@ -61,12 +61,10 @@ gmt.__namecall = newcclosure(function(self, ...)
         local method = getnamecallmethod()
 	if tostring(self) == "CastRemote" and tostring(method) == "FireServer" and client.enabled == true then
            Children(workspace["Stage_Monster"],function(i,v)
-		Args[1]["CF"] = v.Head.Position
 		Args[1]["Part"] = v.Head
                 Args[1]["TargetHead"] = true
                 Args[1]["Hit"] = v.Head
-                Args[1]["Target"] = v.Head
-                Args[1]["position"] = v.Head.Position
+		Args[1]["Damage"] = math.huge
            end)
 		    return self.FireServer(self,unpack(Args))
         end
