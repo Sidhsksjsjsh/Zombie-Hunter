@@ -59,18 +59,16 @@ local oldNamecall = gmt.__namecall
 gmt.__namecall = newcclosure(function(self, ...)
         local Args = {...}
         local method = getnamecallmethod()
-	      if tostring(self) == "CastRemote" and tostring(method) == "FireServer" and client.enabled == true then
+	if tostring(self) == "CastRemote" and tostring(method) == "FireServer" and client.enabled == true then
            Children(workspace["Stage_Monster"],function(i,v)
-		            Args[1]["CF"] = v.Head.Position
-		            Args[1]["Part"] = v.Head
-                Args[1]["TargetHead"] = Trigger.Head
+		Args[1]["CF"] = v.Head.Position
+		Args[1]["Part"] = v.Head
+                Args[1]["TargetHead"] = true
                 Args[1]["Hit"] = v.Head
                 Args[1]["Target"] = v.Head
                 Args[1]["position"] = v.Head.Position
-                --Args[1]["normal"] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-                --Args[1]["Damage"] = client.damage
            end)
-		    return self.FireServer(self, unpack(Args))
+		    return self.FireServer(self,unpack(Args))
         end
         return oldNamecall(self, ...)
 end)
